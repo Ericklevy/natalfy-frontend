@@ -1,0 +1,12 @@
+# Sobe só o front-end. A API roda pelo docker-compose do repositório natalfy-api,
+# que expõe a porta 8081 na sua máquina.
+services:
+  web:
+    build: .
+    container_name: natalfy-web
+    ports:
+      - "4200:80"
+    environment:
+      - API_URL=http://host.docker.internal:8081
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
